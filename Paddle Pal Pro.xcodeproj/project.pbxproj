@@ -1,0 +1,612 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C658E35E24101BB600F5BA99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E35D24101BB600F5BA99 /* AppDelegate.swift */; };
+		C658E36024101BB600F5BA99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E35F24101BB600F5BA99 /* SceneDelegate.swift */; };
+		C658E36224101BB600F5BA99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E36124101BB600F5BA99 /* ViewController.swift */; };
+		C658E36524101BB600F5BA99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C658E36324101BB600F5BA99 /* Main.storyboard */; };
+		C658E36824101BB600F5BA99 /* Paddle_Pal_Pro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C658E36624101BB600F5BA99 /* Paddle_Pal_Pro.xcdatamodeld */; };
+		C658E36A24101BB800F5BA99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C658E36924101BB800F5BA99 /* Assets.xcassets */; };
+		C658E36D24101BB800F5BA99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C658E36B24101BB800F5BA99 /* LaunchScreen.storyboard */; };
+		C658E37824101BB800F5BA99 /* Paddle_Pal_ProTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E37724101BB800F5BA99 /* Paddle_Pal_ProTests.swift */; };
+		C658E38324101BB800F5BA99 /* Paddle_Pal_ProUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E38224101BB800F5BA99 /* Paddle_Pal_ProUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C658E37424101BB800F5BA99 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C658E35224101BB600F5BA99 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C658E35924101BB600F5BA99;
+			remoteInfo = "Paddle Pal Pro";
+		};
+		C658E37F24101BB800F5BA99 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C658E35224101BB600F5BA99 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C658E35924101BB600F5BA99;
+			remoteInfo = "Paddle Pal Pro";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C658E35A24101BB600F5BA99 /* Paddle Pal Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Paddle Pal Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C658E35D24101BB600F5BA99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C658E35F24101BB600F5BA99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C658E36124101BB600F5BA99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C658E36424101BB600F5BA99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C658E36724101BB600F5BA99 /* Paddle_Pal_Pro.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Paddle_Pal_Pro.xcdatamodel; sourceTree = "<group>"; };
+		C658E36924101BB800F5BA99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C658E36C24101BB800F5BA99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C658E36E24101BB800F5BA99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C658E37324101BB800F5BA99 /* Paddle Pal ProTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Paddle Pal ProTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C658E37724101BB800F5BA99 /* Paddle_Pal_ProTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddle_Pal_ProTests.swift; sourceTree = "<group>"; };
+		C658E37924101BB800F5BA99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C658E37E24101BB800F5BA99 /* Paddle Pal ProUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Paddle Pal ProUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C658E38224101BB800F5BA99 /* Paddle_Pal_ProUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddle_Pal_ProUITests.swift; sourceTree = "<group>"; };
+		C658E38424101BB800F5BA99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C658E35724101BB600F5BA99 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C658E37024101BB800F5BA99 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C658E37B24101BB800F5BA99 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C658E35124101BB600F5BA99 = {
+			isa = PBXGroup;
+			children = (
+				C658E35C24101BB600F5BA99 /* Paddle Pal Pro */,
+				C658E37624101BB800F5BA99 /* Paddle Pal ProTests */,
+				C658E38124101BB800F5BA99 /* Paddle Pal ProUITests */,
+				C658E35B24101BB600F5BA99 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C658E35B24101BB600F5BA99 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C658E35A24101BB600F5BA99 /* Paddle Pal Pro.app */,
+				C658E37324101BB800F5BA99 /* Paddle Pal ProTests.xctest */,
+				C658E37E24101BB800F5BA99 /* Paddle Pal ProUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C658E35C24101BB600F5BA99 /* Paddle Pal Pro */ = {
+			isa = PBXGroup;
+			children = (
+				C658E35D24101BB600F5BA99 /* AppDelegate.swift */,
+				C658E35F24101BB600F5BA99 /* SceneDelegate.swift */,
+				C658E36124101BB600F5BA99 /* ViewController.swift */,
+				C658E36324101BB600F5BA99 /* Main.storyboard */,
+				C658E36924101BB800F5BA99 /* Assets.xcassets */,
+				C658E36B24101BB800F5BA99 /* LaunchScreen.storyboard */,
+				C658E36E24101BB800F5BA99 /* Info.plist */,
+				C658E36624101BB600F5BA99 /* Paddle_Pal_Pro.xcdatamodeld */,
+			);
+			path = "Paddle Pal Pro";
+			sourceTree = "<group>";
+		};
+		C658E37624101BB800F5BA99 /* Paddle Pal ProTests */ = {
+			isa = PBXGroup;
+			children = (
+				C658E37724101BB800F5BA99 /* Paddle_Pal_ProTests.swift */,
+				C658E37924101BB800F5BA99 /* Info.plist */,
+			);
+			path = "Paddle Pal ProTests";
+			sourceTree = "<group>";
+		};
+		C658E38124101BB800F5BA99 /* Paddle Pal ProUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C658E38224101BB800F5BA99 /* Paddle_Pal_ProUITests.swift */,
+				C658E38424101BB800F5BA99 /* Info.plist */,
+			);
+			path = "Paddle Pal ProUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C658E35924101BB600F5BA99 /* Paddle Pal Pro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C658E38724101BB800F5BA99 /* Build configuration list for PBXNativeTarget "Paddle Pal Pro" */;
+			buildPhases = (
+				C658E35624101BB600F5BA99 /* Sources */,
+				C658E35724101BB600F5BA99 /* Frameworks */,
+				C658E35824101BB600F5BA99 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Paddle Pal Pro";
+			productName = "Paddle Pal Pro";
+			productReference = C658E35A24101BB600F5BA99 /* Paddle Pal Pro.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C658E37224101BB800F5BA99 /* Paddle Pal ProTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C658E38A24101BB800F5BA99 /* Build configuration list for PBXNativeTarget "Paddle Pal ProTests" */;
+			buildPhases = (
+				C658E36F24101BB800F5BA99 /* Sources */,
+				C658E37024101BB800F5BA99 /* Frameworks */,
+				C658E37124101BB800F5BA99 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C658E37524101BB800F5BA99 /* PBXTargetDependency */,
+			);
+			name = "Paddle Pal ProTests";
+			productName = "Paddle Pal ProTests";
+			productReference = C658E37324101BB800F5BA99 /* Paddle Pal ProTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C658E37D24101BB800F5BA99 /* Paddle Pal ProUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C658E38D24101BB800F5BA99 /* Build configuration list for PBXNativeTarget "Paddle Pal ProUITests" */;
+			buildPhases = (
+				C658E37A24101BB800F5BA99 /* Sources */,
+				C658E37B24101BB800F5BA99 /* Frameworks */,
+				C658E37C24101BB800F5BA99 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C658E38024101BB800F5BA99 /* PBXTargetDependency */,
+			);
+			name = "Paddle Pal ProUITests";
+			productName = "Paddle Pal ProUITests";
+			productReference = C658E37E24101BB800F5BA99 /* Paddle Pal ProUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C658E35224101BB600F5BA99 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Warren Zimmerman";
+				TargetAttributes = {
+					C658E35924101BB600F5BA99 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					C658E37224101BB800F5BA99 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = C658E35924101BB600F5BA99;
+					};
+					C658E37D24101BB800F5BA99 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = C658E35924101BB600F5BA99;
+					};
+				};
+			};
+			buildConfigurationList = C658E35524101BB600F5BA99 /* Build configuration list for PBXProject "Paddle Pal Pro" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C658E35124101BB600F5BA99;
+			productRefGroup = C658E35B24101BB600F5BA99 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C658E35924101BB600F5BA99 /* Paddle Pal Pro */,
+				C658E37224101BB800F5BA99 /* Paddle Pal ProTests */,
+				C658E37D24101BB800F5BA99 /* Paddle Pal ProUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C658E35824101BB600F5BA99 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C658E36D24101BB800F5BA99 /* LaunchScreen.storyboard in Resources */,
+				C658E36A24101BB800F5BA99 /* Assets.xcassets in Resources */,
+				C658E36524101BB600F5BA99 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C658E37124101BB800F5BA99 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C658E37C24101BB800F5BA99 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C658E35624101BB600F5BA99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C658E36224101BB600F5BA99 /* ViewController.swift in Sources */,
+				C658E36824101BB600F5BA99 /* Paddle_Pal_Pro.xcdatamodeld in Sources */,
+				C658E35E24101BB600F5BA99 /* AppDelegate.swift in Sources */,
+				C658E36024101BB600F5BA99 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C658E36F24101BB800F5BA99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C658E37824101BB800F5BA99 /* Paddle_Pal_ProTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C658E37A24101BB800F5BA99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C658E38324101BB800F5BA99 /* Paddle_Pal_ProUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C658E37524101BB800F5BA99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C658E35924101BB600F5BA99 /* Paddle Pal Pro */;
+			targetProxy = C658E37424101BB800F5BA99 /* PBXContainerItemProxy */;
+		};
+		C658E38024101BB800F5BA99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C658E35924101BB600F5BA99 /* Paddle Pal Pro */;
+			targetProxy = C658E37F24101BB800F5BA99 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C658E36324101BB600F5BA99 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C658E36424101BB600F5BA99 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C658E36B24101BB800F5BA99 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C658E36C24101BB800F5BA99 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C658E38524101BB800F5BA99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C658E38624101BB800F5BA99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C658E38824101BB800F5BA99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XW3286R3Y9;
+				INFOPLIST_FILE = "Paddle Pal Pro/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.warrenz.Paddle-Pal-Pro";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C658E38924101BB800F5BA99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XW3286R3Y9;
+				INFOPLIST_FILE = "Paddle Pal Pro/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.warrenz.Paddle-Pal-Pro";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C658E38B24101BB800F5BA99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XW3286R3Y9;
+				INFOPLIST_FILE = "Paddle Pal ProTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.warrenz.Paddle-Pal-ProTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Paddle Pal Pro.app/Paddle Pal Pro";
+			};
+			name = Debug;
+		};
+		C658E38C24101BB800F5BA99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XW3286R3Y9;
+				INFOPLIST_FILE = "Paddle Pal ProTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.warrenz.Paddle-Pal-ProTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Paddle Pal Pro.app/Paddle Pal Pro";
+			};
+			name = Release;
+		};
+		C658E38E24101BB800F5BA99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XW3286R3Y9;
+				INFOPLIST_FILE = "Paddle Pal ProUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.warrenz.Paddle-Pal-ProUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Paddle Pal Pro";
+			};
+			name = Debug;
+		};
+		C658E38F24101BB800F5BA99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XW3286R3Y9;
+				INFOPLIST_FILE = "Paddle Pal ProUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.warrenz.Paddle-Pal-ProUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Paddle Pal Pro";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C658E35524101BB600F5BA99 /* Build configuration list for PBXProject "Paddle Pal Pro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C658E38524101BB800F5BA99 /* Debug */,
+				C658E38624101BB800F5BA99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C658E38724101BB800F5BA99 /* Build configuration list for PBXNativeTarget "Paddle Pal Pro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C658E38824101BB800F5BA99 /* Debug */,
+				C658E38924101BB800F5BA99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C658E38A24101BB800F5BA99 /* Build configuration list for PBXNativeTarget "Paddle Pal ProTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C658E38B24101BB800F5BA99 /* Debug */,
+				C658E38C24101BB800F5BA99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C658E38D24101BB800F5BA99 /* Build configuration list for PBXNativeTarget "Paddle Pal ProUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C658E38E24101BB800F5BA99 /* Debug */,
+				C658E38F24101BB800F5BA99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C658E36624101BB600F5BA99 /* Paddle_Pal_Pro.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C658E36724101BB600F5BA99 /* Paddle_Pal_Pro.xcdatamodel */,
+			);
+			currentVersion = C658E36724101BB600F5BA99 /* Paddle_Pal_Pro.xcdatamodel */;
+			path = Paddle_Pal_Pro.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C658E35224101BB600F5BA99 /* Project object */;
+}
