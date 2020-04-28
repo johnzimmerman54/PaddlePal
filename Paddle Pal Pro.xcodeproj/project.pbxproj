@@ -3,19 +3,30 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53D9C578BCD014102492442B /* Pods_Paddle_Pal_Pro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BED5E9DAC8408EB5AF89083 /* Pods_Paddle_Pal_Pro.framework */; };
+		C64705F22458ACCE00C8D168 /* sample.geojson in Resources */ = {isa = PBXBuildFile; fileRef = C64705F12458ACCE00C8D168 /* sample.geojson */; };
 		C658E35E24101BB600F5BA99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E35D24101BB600F5BA99 /* AppDelegate.swift */; };
 		C658E36024101BB600F5BA99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E35F24101BB600F5BA99 /* SceneDelegate.swift */; };
-		C658E36224101BB600F5BA99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E36124101BB600F5BA99 /* ViewController.swift */; };
+		C658E36224101BB600F5BA99 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E36124101BB600F5BA99 /* HomeViewController.swift */; };
 		C658E36524101BB600F5BA99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C658E36324101BB600F5BA99 /* Main.storyboard */; };
 		C658E36824101BB600F5BA99 /* Paddle_Pal_Pro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C658E36624101BB600F5BA99 /* Paddle_Pal_Pro.xcdatamodeld */; };
 		C658E36A24101BB800F5BA99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C658E36924101BB800F5BA99 /* Assets.xcassets */; };
 		C658E36D24101BB800F5BA99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C658E36B24101BB800F5BA99 /* LaunchScreen.storyboard */; };
 		C658E37824101BB800F5BA99 /* Paddle_Pal_ProTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E37724101BB800F5BA99 /* Paddle_Pal_ProTests.swift */; };
 		C658E38324101BB800F5BA99 /* Paddle_Pal_ProUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E38224101BB800F5BA99 /* Paddle_Pal_ProUITests.swift */; };
+		C658E39124101EA000F5BA99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C658E39024101EA000F5BA99 /* GoogleService-Info.plist */; };
+		C658E3962410276C00F5BA99 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E3952410276C00F5BA99 /* RegisterViewController.swift */; };
+		C658E3982410293B00F5BA99 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E3972410293B00F5BA99 /* LoginViewController.swift */; };
+		C658E39A2410314F00F5BA99 /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E3992410314F00F5BA99 /* TripsViewController.swift */; };
+		C658E39C241043C200F5BA99 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E39B241043C200F5BA99 /* Constants.swift */; };
+		C658E3A024105EDA00F5BA99 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E39F24105EDA00F5BA99 /* Trip.swift */; };
+		C658E3A224105F3C00F5BA99 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E3A124105F3C00F5BA99 /* User.swift */; };
+		C658E3A424106DA100F5BA99 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E3A324106DA100F5BA99 /* SwipeTableViewController.swift */; };
+		C658E3A62412FCE100F5BA99 /* TripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E3A52412FCE100F5BA99 /* TripDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +47,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3BED5E9DAC8408EB5AF89083 /* Pods_Paddle_Pal_Pro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Paddle_Pal_Pro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C438B25C2F9C732412CBD7C3 /* Pods-Paddle Pal Pro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paddle Pal Pro.debug.xcconfig"; path = "Target Support Files/Pods-Paddle Pal Pro/Pods-Paddle Pal Pro.debug.xcconfig"; sourceTree = "<group>"; };
+		C64705F12458ACCE00C8D168 /* sample.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample.geojson; sourceTree = "<group>"; };
 		C658E35A24101BB600F5BA99 /* Paddle Pal Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Paddle Pal Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C658E35D24101BB600F5BA99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C658E35F24101BB600F5BA99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C658E36124101BB600F5BA99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C658E36124101BB600F5BA99 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C658E36424101BB600F5BA99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C658E36724101BB600F5BA99 /* Paddle_Pal_Pro.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Paddle_Pal_Pro.xcdatamodel; sourceTree = "<group>"; };
 		C658E36924101BB800F5BA99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +65,16 @@
 		C658E37E24101BB800F5BA99 /* Paddle Pal ProUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Paddle Pal ProUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C658E38224101BB800F5BA99 /* Paddle_Pal_ProUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddle_Pal_ProUITests.swift; sourceTree = "<group>"; };
 		C658E38424101BB800F5BA99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C658E39024101EA000F5BA99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C658E3952410276C00F5BA99 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		C658E3972410293B00F5BA99 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C658E3992410314F00F5BA99 /* TripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsViewController.swift; sourceTree = "<group>"; };
+		C658E39B241043C200F5BA99 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C658E39F24105EDA00F5BA99 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		C658E3A124105F3C00F5BA99 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C658E3A324106DA100F5BA99 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
+		C658E3A52412FCE100F5BA99 /* TripDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailViewController.swift; sourceTree = "<group>"; };
+		DD5483CB9A8AAD5624C720E5 /* Pods-Paddle Pal Pro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paddle Pal Pro.release.xcconfig"; path = "Target Support Files/Pods-Paddle Pal Pro/Pods-Paddle Pal Pro.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53D9C578BCD014102492442B /* Pods_Paddle_Pal_Pro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +103,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		71A41429FF6DF4CA0B2A308E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C438B25C2F9C732412CBD7C3 /* Pods-Paddle Pal Pro.debug.xcconfig */,
+				DD5483CB9A8AAD5624C720E5 /* Pods-Paddle Pal Pro.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8E5FF30009C37569A8CDD1EF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3BED5E9DAC8408EB5AF89083 /* Pods_Paddle_Pal_Pro.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C64705F02458ACB000C8D168 /* GeoData */ = {
+			isa = PBXGroup;
+			children = (
+				C64705F12458ACCE00C8D168 /* sample.geojson */,
+			);
+			path = GeoData;
+			sourceTree = "<group>";
+		};
 		C658E35124101BB600F5BA99 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +135,8 @@
 				C658E37624101BB800F5BA99 /* Paddle Pal ProTests */,
 				C658E38124101BB800F5BA99 /* Paddle Pal ProUITests */,
 				C658E35B24101BB600F5BA99 /* Products */,
+				71A41429FF6DF4CA0B2A308E /* Pods */,
+				8E5FF30009C37569A8CDD1EF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,14 +153,18 @@
 		C658E35C24101BB600F5BA99 /* Paddle Pal Pro */ = {
 			isa = PBXGroup;
 			children = (
+				C64705F02458ACB000C8D168 /* GeoData */,
 				C658E35D24101BB600F5BA99 /* AppDelegate.swift */,
 				C658E35F24101BB600F5BA99 /* SceneDelegate.swift */,
-				C658E36124101BB600F5BA99 /* ViewController.swift */,
-				C658E36324101BB600F5BA99 /* Main.storyboard */,
+				C658E392241026EC00F5BA99 /* Models */,
+				C658E393241026F600F5BA99 /* Views */,
+				C658E394241026FF00F5BA99 /* Controllers */,
 				C658E36924101BB800F5BA99 /* Assets.xcassets */,
 				C658E36B24101BB800F5BA99 /* LaunchScreen.storyboard */,
 				C658E36E24101BB800F5BA99 /* Info.plist */,
+				C658E39024101EA000F5BA99 /* GoogleService-Info.plist */,
 				C658E36624101BB600F5BA99 /* Paddle_Pal_Pro.xcdatamodeld */,
+				C658E39B241043C200F5BA99 /* Constants.swift */,
 			);
 			path = "Paddle Pal Pro";
 			sourceTree = "<group>";
@@ -131,6 +187,36 @@
 			path = "Paddle Pal ProUITests";
 			sourceTree = "<group>";
 		};
+		C658E392241026EC00F5BA99 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C658E3A124105F3C00F5BA99 /* User.swift */,
+				C658E39F24105EDA00F5BA99 /* Trip.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C658E393241026F600F5BA99 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C658E36324101BB600F5BA99 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C658E394241026FF00F5BA99 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C658E36124101BB600F5BA99 /* HomeViewController.swift */,
+				C658E3952410276C00F5BA99 /* RegisterViewController.swift */,
+				C658E3972410293B00F5BA99 /* LoginViewController.swift */,
+				C658E3992410314F00F5BA99 /* TripsViewController.swift */,
+				C658E3A52412FCE100F5BA99 /* TripDetailViewController.swift */,
+				C658E3A324106DA100F5BA99 /* SwipeTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,9 +224,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C658E38724101BB800F5BA99 /* Build configuration list for PBXNativeTarget "Paddle Pal Pro" */;
 			buildPhases = (
+				C3F87DDCA9F59C04D0157148 /* [CP] Check Pods Manifest.lock */,
 				C658E35624101BB600F5BA99 /* Sources */,
 				C658E35724101BB600F5BA99 /* Frameworks */,
 				C658E35824101BB600F5BA99 /* Resources */,
+				44C82B64A7F42F80CCD10798 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -236,6 +324,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C658E36D24101BB800F5BA99 /* LaunchScreen.storyboard in Resources */,
+				C658E39124101EA000F5BA99 /* GoogleService-Info.plist in Resources */,
+				C64705F22458ACCE00C8D168 /* sample.geojson in Resources */,
 				C658E36A24101BB800F5BA99 /* Assets.xcassets in Resources */,
 				C658E36524101BB600F5BA99 /* Main.storyboard in Resources */,
 			);
@@ -257,15 +347,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		44C82B64A7F42F80CCD10798 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Paddle Pal Pro/Pods-Paddle Pal Pro-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Paddle Pal Pro/Pods-Paddle Pal Pro-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Paddle Pal Pro/Pods-Paddle Pal Pro-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3F87DDCA9F59C04D0157148 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Paddle Pal Pro-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C658E35624101BB600F5BA99 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C658E36224101BB600F5BA99 /* ViewController.swift in Sources */,
+				C658E3A024105EDA00F5BA99 /* Trip.swift in Sources */,
+				C658E3982410293B00F5BA99 /* LoginViewController.swift in Sources */,
+				C658E3A424106DA100F5BA99 /* SwipeTableViewController.swift in Sources */,
+				C658E36224101BB600F5BA99 /* HomeViewController.swift in Sources */,
+				C658E39A2410314F00F5BA99 /* TripsViewController.swift in Sources */,
+				C658E3962410276C00F5BA99 /* RegisterViewController.swift in Sources */,
+				C658E3A62412FCE100F5BA99 /* TripDetailViewController.swift in Sources */,
 				C658E36824101BB600F5BA99 /* Paddle_Pal_Pro.xcdatamodeld in Sources */,
 				C658E35E24101BB600F5BA99 /* AppDelegate.swift in Sources */,
 				C658E36024101BB600F5BA99 /* SceneDelegate.swift in Sources */,
+				C658E3A224105F3C00F5BA99 /* User.swift in Sources */,
+				C658E39C241043C200F5BA99 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +576,7 @@
 		};
 		C658E38824101BB800F5BA99 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C438B25C2F9C732412CBD7C3 /* Pods-Paddle Pal Pro.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -454,6 +595,7 @@
 		};
 		C658E38924101BB800F5BA99 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD5483CB9A8AAD5624C720E5 /* Pods-Paddle Pal Pro.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
