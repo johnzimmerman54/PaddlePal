@@ -7,6 +7,7 @@
 //
 
 import XCTest
+
 @testable import Paddle_Pal_Pro
 
 class Paddle_Pal_ProTests: XCTestCase {
