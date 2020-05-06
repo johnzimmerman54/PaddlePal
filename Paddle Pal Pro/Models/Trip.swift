@@ -12,7 +12,7 @@ import RealmSwift
 class Trip: Object {
     @objc dynamic var tripName: String = ""
     @objc dynamic var color : String = ""
-    @objc dynamic var date: Date = Date()
+    @objc dynamic var date: Date?
     
     @objc dynamic var tripUser: String = ""
 }

@@ -7,7 +7,7 @@
 //
 
 struct K {
-    static let appName = "Paddle Pal Pro"
+    static let appName = "Paddle Pal"
     static let cellIdentifier = "TripItemCell"
     static let cellNibName = "TripNibCell"
     static let registerSegue = "TripsViewRegisterSegue"

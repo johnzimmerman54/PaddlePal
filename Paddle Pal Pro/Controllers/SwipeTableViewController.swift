@@ -50,6 +50,7 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
     
     func updateModel(at indexPath: IndexPath) {
         // Update our data model, override in subclasses.
+        
     }
     
 }

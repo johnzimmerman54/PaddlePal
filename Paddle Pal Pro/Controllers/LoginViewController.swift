@@ -40,6 +40,7 @@ class LoginViewController: UIViewController {
                 } else {
                     self.user = User()
                     self.user?.email = email
+                    self.user?.createdDate = Date()
                     self.user?.id = self.userResult?.count ?? 0
                     do {
                         try self.realm.write {

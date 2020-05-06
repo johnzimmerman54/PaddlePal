@@ -38,6 +38,7 @@ class RegisterViewController: UIViewController {
                     // Save new user for session
                     self.user = User()
                     self.user?.email = email
+                    self.user?.createdDate = Date()
                     let userId = self.realm.objects(User.self).count
                     self.user?.id = userId
                     
