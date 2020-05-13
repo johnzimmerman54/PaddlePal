@@ -47,12 +47,23 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
     //MARK: - Map View
 
     var mapView: NavigationMapView!
-    var paddleActive = false
-    var paddleRoute: Route?
-    var directionsRoute: Route?
+    var tripActive = false
+    var startPoint: CLLocationCoordinate2D?
+    var lastPoint: CLLocationCoordinate2D?
+    var currentPoint: CLLocationCoordinate2D?
+    var endPoint: CLLocationCoordinate2D?
+    var tripCoords = [CLLocationCoordinate2D]()
     var startButton: UIButton!
+    var timer = Timer()
     
+    // may not need
+    var tripRoute: Route?
+    var directionsRoute: Route?
     let disneyLandCoordinate = CLLocationCoordinate2D(latitude: 33.8121, longitude: -117.9190)
+    
+    let testCoord1 = CLLocationCoordinate2D(latitude: 45.472633, longitude: -122.669394)
+    let testCoord2 = CLLocationCoordinate2D(latitude: 45.472226, longitude: -122.664364)
+    let testCoord3 = CLLocationCoordinate2D(latitude: 45.477586, longitude: -122.663132)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,17 +103,107 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
     }
     
     @objc func startButtonPressed(_ sender: UIButton) {
-        calculateRoute(from: (mapView.userLocation!.coordinate), to: disneyLandCoordinate) { (route, error) in
-            if error != nil {
-                print("Error getting route")
-            }
+        timer.invalidate()
+        //mapView.setUserTrackingMode(.none, animated: true, completionHandler: nil)
+        
+        tripActive = true
+        startPoint = testCoord1
+        //tripCoords.insert(startPoint!, at: 0)
+
+        tripCoords.append(contentsOf: [testCoord1, testCoord2, testCoord3])
+        
+//        calculateRoute(from: (mapView.userLocation!.coordinate), to: disneyLandCoordinate) { (route, error) in
+//            if error != nil {
+//                print("Error getting route")
+//            }
+//        }
+        
+        // Start Timer starts Trip Recording
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(tictock), userInfo: nil, repeats: true)
+    }
+    
+    
+    // MARK: - Customizing calculateRoute() to track all trip coords
+    func recordRoute(from lastCoor: CLLocationCoordinate2D, to nextCoor: CLLocationCoordinate2D) {
+        
+        let lastPoint = CLLocation(latitude: lastCoor.latitude, longitude: lastCoor.longitude)
+        let nextPoint = CLLocation(latitude: nextCoor.latitude, longitude: nextCoor.longitude)
+        // calculate distance between points
+        let distanceInMeters = lastPoint.distance(from: nextPoint)
+
+        // add next trip coordinate if greater than 50 meters from last
+        if distanceInMeters > 50 {
+            // set new point
+            tripCoords.append(nextCoor)
+        } else {
+            return
+        }
+        
+    }
+    
+    func drawTrip() {
+        guard tripCoords.count > 0 else { return }
+        var routeCoordinates = tripCoords
+        //draw line
+        let coordinateBounds = MGLCoordinateBounds(sw: testCoord1, ne: testCoord3)
+        let insets = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
+        let routeCam = self.mapView.cameraThatFitsCoordinateBounds(coordinateBounds, edgePadding: insets)
+        self.mapView.setCamera(routeCam, animated: true)
+        
+        let annotationStart = MGLPointAnnotation()
+        annotationStart.coordinate = testCoord1
+        annotationStart.title = "Start"
+        mapView.addAnnotation(annotationStart)
+        
+        let annotationEnd = MGLPointAnnotation()
+        annotationEnd.coordinate = testCoord3
+        annotationEnd.title = "End"
+        mapView.addAnnotation(annotationEnd)
+        
+        let polyline = MGLPolylineFeature(coordinates: &routeCoordinates, count: UInt(tripCoords.count))
+        
+        if let source = mapView.style?.source(withIdentifier: "route-source") as? MGLShapeSource {
+            source.shape = polyline
+        } else {
+            let source = MGLShapeSource(identifier: "route-source", features: [polyline], options: nil)
+            
+            let lineStyle = MGLLineStyleLayer(identifier: "route-style", source: source)
+            
+            lineStyle.lineWidth = NSExpression(forConstantValue: 4.0)
+            
+            mapView.style?.addSource(source)
+            mapView.style?.addLayer(lineStyle)
+        }
+        
+    }
+    
+    func saveTrip(coordinates: [CLLocationCoordinate2D]) {
+        // save GeoJSON file
+                
+    }
+    
+    // MARK: - record and draw every second
+    @objc func tictock() {
+        if tripActive {
+            // Get last coord and current coord to record
+            //recordRoute(from: lastPoint!, to: currentPoint!)
+            
+            // Draw Route
+            drawTrip()
+            
+        }
+        else {
+            timer.invalidate()
+            
+            // save GeoJSON file with coordinates
+            saveTrip(coordinates: tripCoords)
         }
     }
     
-    func calculateRoute(from originCoor: CLLocationCoordinate2D, to desinationCoor: CLLocationCoordinate2D, completion: @escaping (Route?, Error?) -> Void) {
+    func calculateRoute(from originCoor: CLLocationCoordinate2D, to destinationCoor: CLLocationCoordinate2D, completion: @escaping (Route?, Error?) -> Void) {
         
         let origin = Waypoint(coordinate: originCoor, coordinateAccuracy: -1, name: "Start")
-        let destination = Waypoint(coordinate: originCoor, coordinateAccuracy: -1, name: "Finish")
+        let destination = Waypoint(coordinate: destinationCoor, coordinateAccuracy: -1, name: "Finish")
         
         let options = NavigationRouteOptions(waypoints: [origin, destination], profileIdentifier: .automobileAvoidingTraffic)
         
@@ -110,10 +211,10 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
             self.drawRoute(route: self.directionsRoute!)
             
             //draw line
-            let coordinateBounds = MGLCoordinateBounds(sw: desinationCoor, ne: originCoor)
-            let insets = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
-            let routeCam = self.mapView.cameraThatFitsCoordinateBounds(coordinateBounds, edgePadding: insets)
-            self.mapView.setCamera(routeCam, animated: true)
+//            let coordinateBounds = MGLCoordinateBounds(sw: destinationCoor, ne: originCoor)
+//            let insets = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
+//            let routeCam = self.mapView.cameraThatFitsCoordinateBounds(coordinateBounds, edgePadding: insets)
+//            self.mapView.setCamera(routeCam, animated: true)
             
         })
     }
@@ -138,6 +239,14 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
         
     }
     
+    func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+        return true
+    }
+    
+//    func mapView(_ mapView: MGLMapView, tapOnCalloutFor annotation: MGLAnnotation) {
+//        let navigationVC = NavigationViewController(for: directionsRoute!)
+//        present(navigationVC, animated: true, completion: nil)
+//    }
     
      //GeoJson format for each coord
      //    {
