@@ -54,7 +54,14 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
     var endPoint: CLLocationCoordinate2D?
     var tripCoords = [CLLocationCoordinate2D]()
     var startButton: UIButton!
+    var stopWatch: UITextField!
     var timer = Timer()
+    var (hours, minutes, seconds, fractions) = (0, 0, 0, 0)
+    var fractionsString: String?
+    var secondsString: String?
+    var minutesString: String?
+    var hoursString: String?
+    var totalTime = "00:00:00.00"
     
     // may not need
     var tripRoute: Route?
@@ -85,6 +92,7 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
         print("userTrip: \(userTrip!.tripName)")
         
         setupStartButton()
+        setupStopWatch()
     }
  
     func setupStartButton() {
@@ -102,24 +110,31 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
         view.addSubview(startButton)
     }
     
+    func setupStopWatch() {
+        stopWatch = UITextField(frame: CGRect(x: 0, y: 90, width: view.frame.width, height: 65))
+        stopWatch.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3)
+        stopWatch.text = String(totalTime)
+        stopWatch.font = UIFont(name: "Arial", size: 24)
+        stopWatch.textAlignment = NSTextAlignment.center
+        view.addSubview(stopWatch)
+    }
+    
     @objc func startButtonPressed(_ sender: UIButton) {
         timer.invalidate()
         //mapView.setUserTrackingMode(.none, animated: true, completionHandler: nil)
         
         tripActive = true
-        startPoint = testCoord1
-        //tripCoords.insert(startPoint!, at: 0)
+        if mapView.userLocation?.location != nil {
+            startPoint = CLLocationCoordinate2D(latitude: mapView.userLocation!.location!.coordinate.latitude, longitude: mapView.userLocation!.location!.coordinate.longitude)
+        } else {
+            print("User location not available.")
+        }
 
-        tripCoords.append(contentsOf: [testCoord1, testCoord2, testCoord3])
-        
-//        calculateRoute(from: (mapView.userLocation!.coordinate), to: disneyLandCoordinate) { (route, error) in
-//            if error != nil {
-//                print("Error getting route")
-//            }
-//        }
+        tripCoords.append(contentsOf: [startPoint!, testCoord2, testCoord3])
+        drawTrip()
         
         // Start Timer starts Trip Recording
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(tictock), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(tictock), userInfo: nil, repeats: true)
     }
     
     
@@ -144,9 +159,21 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
     func drawTrip() {
         guard tripCoords.count > 0 else { return }
         var routeCoordinates = tripCoords
+        lastPoint = routeCoordinates.last
+        
+        // Get User Location
+        if mapView.userLocation != nil {
+            currentPoint = CLLocationCoordinate2D(latitude: mapView.userLocation!.coordinate.latitude, longitude: mapView.userLocation!.coordinate.longitude)
+        } else {
+            print("User location not available.")
+        }
+        
+        // Compare User Location to last Coordinant and record if > 50 meters
+        recordRoute(from: lastPoint!, to: currentPoint!)
+        
         //draw line
-        let coordinateBounds = MGLCoordinateBounds(sw: testCoord1, ne: testCoord3)
-        let insets = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
+        let coordinateBounds = MGLCoordinateBounds(sw: startPoint!, ne: testCoord3)
+        let insets = UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100)
         let routeCam = self.mapView.cameraThatFitsCoordinateBounds(coordinateBounds, edgePadding: insets)
         self.mapView.setCamera(routeCam, animated: true)
         
@@ -154,11 +181,6 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
         annotationStart.coordinate = testCoord1
         annotationStart.title = "Start"
         mapView.addAnnotation(annotationStart)
-        
-        let annotationEnd = MGLPointAnnotation()
-        annotationEnd.coordinate = testCoord3
-        annotationEnd.title = "End"
-        mapView.addAnnotation(annotationEnd)
         
         let polyline = MGLPolylineFeature(coordinates: &routeCoordinates, count: UInt(tripCoords.count))
         
@@ -182,15 +204,32 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
                 
     }
     
-    // MARK: - record and draw every second
+    // MARK: - stopwatch count and record trip
     @objc func tictock() {
         if tripActive {
-            // Get last coord and current coord to record
-            //recordRoute(from: lastPoint!, to: currentPoint!)
-            
-            // Draw Route
-            drawTrip()
-            
+            //record time and mark coord every 10 seconds
+            fractions += 1
+            if fractions > 99 {
+                seconds += 1
+                fractions = 0
+                // Draw Route every second
+                drawTrip()
+            }
+            if seconds > 59 {
+                minutes += 1
+                seconds = 0
+            }
+            if minutes > 59 {
+                hours += 1
+                minutes = 0
+            }
+            //Running time
+            fractionsString = fractions > 9 ? "\(fractions)" : "0\(fractions)"
+            secondsString = seconds > 9 ? "\(seconds)" : "0\(seconds)"
+            minutesString = minutes > 9 ? "\(minutes)" : "0\(minutes)"
+            hoursString = hours > 9 ? "\(hours)" : "0\(hours)"
+            totalTime = "\(hoursString!):\(minutesString!):\(secondsString!).\(fractionsString!)"
+            stopWatch.text = totalTime
         }
         else {
             timer.invalidate()
