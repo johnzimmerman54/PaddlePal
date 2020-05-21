@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import RealmSwift
+import CoreLocation
 import Mapbox
 import MapboxCoreNavigation
 import MapboxNavigation
@@ -126,12 +127,12 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
         tripActive = true
         if mapView.userLocation?.location != nil {
             startPoint = CLLocationCoordinate2D(latitude: mapView.userLocation!.location!.coordinate.latitude, longitude: mapView.userLocation!.location!.coordinate.longitude)
+            // Add user location start point to trip coordinates
+            tripCoords.append(contentsOf: [startPoint!])
+            drawTrip()
         } else {
-            print("User location not available.")
+            print("User location not available. - startButtonPressed()")
         }
-
-        tripCoords.append(contentsOf: [startPoint!, testCoord2, testCoord3])
-        drawTrip()
         
         // Start Timer starts Trip Recording
         timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(tictock), userInfo: nil, repeats: true)
@@ -147,7 +148,7 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
         let distanceInMeters = lastPoint.distance(from: nextPoint)
 
         // add next trip coordinate if greater than 50 meters from last
-        if distanceInMeters > 50 {
+        if distanceInMeters > 10 {
             // set new point
             tripCoords.append(nextCoor)
         } else {
@@ -158,31 +159,63 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
     
     func drawTrip() {
         guard tripCoords.count > 0 else { return }
-        var routeCoordinates = tripCoords
-        lastPoint = routeCoordinates.last
+        //var routeCoordinates = tripCoords
+        lastPoint = tripCoords.last
         
         // Get User Location
         if mapView.userLocation != nil {
             currentPoint = CLLocationCoordinate2D(latitude: mapView.userLocation!.coordinate.latitude, longitude: mapView.userLocation!.coordinate.longitude)
+            
+            // Compare User Location to last Coordinant and record if > 10 meters
+            recordRoute(from: lastPoint!, to: currentPoint!)
         } else {
-            print("User location not available.")
+            print("User location not available. - drawTrip()")
         }
         
-        // Compare User Location to last Coordinant and record if > 50 meters
-        recordRoute(from: lastPoint!, to: currentPoint!)
+        // Find coordinant bounds sw (lower left) and ne (upper right)
+        // compare all coords to choose west most point
+        // latitude < to south, > to north
+        // longitude < to east, > to west
+        var northMost = CLLocationDegrees(currentPoint!.latitude)
+        var eastMost = CLLocationDegrees(currentPoint!.longitude)
+        var southMost = CLLocationDegrees(currentPoint!.latitude)
+        var westMost = CLLocationDegrees(currentPoint!.longitude)
         
-        //draw line
-        let coordinateBounds = MGLCoordinateBounds(sw: startPoint!, ne: testCoord3)
+        for coord in tripCoords
+        {
+            if northMost < coord.latitude {
+                northMost = coord.latitude
+            }
+            
+            if eastMost > coord.longitude {
+                eastMost = coord.longitude
+            }
+            
+            if southMost > coord.latitude {
+                southMost = coord.latitude
+            }
+
+            if westMost < coord.longitude {
+                westMost = coord.longitude
+            }
+
+        }
+        
+        let swPoint = CLLocationCoordinate2DMake(southMost, westMost)
+        let nePoint = CLLocationCoordinate2DMake(northMost, eastMost)
+        
+        let coordinateBounds = MGLCoordinateBounds(sw: swPoint, ne: nePoint)
         let insets = UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100)
         let routeCam = self.mapView.cameraThatFitsCoordinateBounds(coordinateBounds, edgePadding: insets)
         self.mapView.setCamera(routeCam, animated: true)
         
+        //draw route
         let annotationStart = MGLPointAnnotation()
         annotationStart.coordinate = testCoord1
         annotationStart.title = "Start"
         mapView.addAnnotation(annotationStart)
         
-        let polyline = MGLPolylineFeature(coordinates: &routeCoordinates, count: UInt(tripCoords.count))
+        let polyline = MGLPolylineFeature(coordinates: &tripCoords, count: UInt(tripCoords.count))
         
         if let source = mapView.style?.source(withIdentifier: "route-source") as? MGLShapeSource {
             source.shape = polyline
@@ -191,7 +224,8 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
             
             let lineStyle = MGLLineStyleLayer(identifier: "route-style", source: source)
             
-            lineStyle.lineWidth = NSExpression(forConstantValue: 4.0)
+            lineStyle.lineColor = NSExpression(forConstantValue: #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1))
+            lineStyle.lineWidth = NSExpression(forConstantValue: 3.0)
             
             mapView.style?.addSource(source)
             mapView.style?.addLayer(lineStyle)
@@ -213,7 +247,9 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
                 seconds += 1
                 fractions = 0
                 // Draw Route every second
-                drawTrip()
+                if mapView.userLocation != nil {
+                    drawTrip()
+                }
             }
             if seconds > 59 {
                 minutes += 1
@@ -239,44 +275,44 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
         }
     }
     
-    func calculateRoute(from originCoor: CLLocationCoordinate2D, to destinationCoor: CLLocationCoordinate2D, completion: @escaping (Route?, Error?) -> Void) {
-        
-        let origin = Waypoint(coordinate: originCoor, coordinateAccuracy: -1, name: "Start")
-        let destination = Waypoint(coordinate: destinationCoor, coordinateAccuracy: -1, name: "Finish")
-        
-        let options = NavigationRouteOptions(waypoints: [origin, destination], profileIdentifier: .automobileAvoidingTraffic)
-        
-        _ = Directions.shared.calculate(options, completionHandler: { (waypoints, routes, error) in self.directionsRoute = routes?.first
-            self.drawRoute(route: self.directionsRoute!)
-            
-            //draw line
-//            let coordinateBounds = MGLCoordinateBounds(sw: destinationCoor, ne: originCoor)
-//            let insets = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
-//            let routeCam = self.mapView.cameraThatFitsCoordinateBounds(coordinateBounds, edgePadding: insets)
-//            self.mapView.setCamera(routeCam, animated: true)
-            
-        })
-    }
-    
-    func drawRoute(route: Route) {
-        guard route.coordinateCount > 0 else { return }
-        var routeCoordinates = route.coordinates!
-        let polyline = MGLPolylineFeature(coordinates: &routeCoordinates, count: route.coordinateCount)
-        
-        if let source = mapView.style?.source(withIdentifier: "route-source") as? MGLShapeSource {
-            source.shape = polyline
-        } else {
-            let source = MGLShapeSource(identifier: "route-source", features: [polyline], options: nil)
-            
-            let lineStyle = MGLLineStyleLayer(identifier: "route-style", source: source)
-            lineStyle.lineColor = NSExpression(forConstantValue: #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1))
-            lineStyle.lineWidth = NSExpression(forConstantValue: 4.0)
-            
-            mapView.style?.addSource(source)
-            mapView.style?.addLayer(lineStyle)
-        }
-        
-    }
+//    func calculateRoute(from originCoor: CLLocationCoordinate2D, to destinationCoor: CLLocationCoordinate2D, completion: @escaping (Route?, Error?) -> Void) {
+//
+//        let origin = Waypoint(coordinate: originCoor, coordinateAccuracy: -1, name: "Start")
+//        let destination = Waypoint(coordinate: destinationCoor, coordinateAccuracy: -1, name: "Finish")
+//
+//        let options = NavigationRouteOptions(waypoints: [origin, destination], profileIdentifier: .automobileAvoidingTraffic)
+//
+//        _ = Directions.shared.calculate(options, completionHandler: { (waypoints, routes, error) in self.directionsRoute = routes?.first
+//            self.drawRoute(route: self.directionsRoute!)
+//
+//            //draw line
+////            let coordinateBounds = MGLCoordinateBounds(sw: destinationCoor, ne: originCoor)
+////            let insets = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
+////            let routeCam = self.mapView.cameraThatFitsCoordinateBounds(coordinateBounds, edgePadding: insets)
+////            self.mapView.setCamera(routeCam, animated: true)
+//
+//        })
+//    }
+//
+//    func drawRoute(route: Route) {
+//        guard route.coordinateCount > 0 else { return }
+//        var routeCoordinates = route.coordinates!
+//        let polyline = MGLPolylineFeature(coordinates: &routeCoordinates, count: route.coordinateCount)
+//
+//        if let source = mapView.style?.source(withIdentifier: "route-source") as? MGLShapeSource {
+//            source.shape = polyline
+//        } else {
+//            let source = MGLShapeSource(identifier: "route-source", features: [polyline], options: nil)
+//
+//            let lineStyle = MGLLineStyleLayer(identifier: "route-style", source: source)
+//            lineStyle.lineColor = NSExpression(forConstantValue: #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1))
+//            lineStyle.lineWidth = NSExpression(forConstantValue: 4.0)
+//
+//            mapView.style?.addSource(source)
+//            mapView.style?.addLayer(lineStyle)
+//        }
+//
+//    }
     
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
         return true
