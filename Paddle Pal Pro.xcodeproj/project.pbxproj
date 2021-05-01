@@ -27,6 +27,7 @@
 		C658E3A224105F3C00F5BA99 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E3A124105F3C00F5BA99 /* User.swift */; };
 		C658E3A424106DA100F5BA99 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E3A324106DA100F5BA99 /* SwipeTableViewController.swift */; };
 		C658E3A62412FCE100F5BA99 /* TripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658E3A52412FCE100F5BA99 /* TripDetailViewController.swift */; };
+		C6CB0FCC25CF4B60009A19AA /* geoJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CB0FCB25CF4B60009A19AA /* geoJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		C658E3A124105F3C00F5BA99 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C658E3A324106DA100F5BA99 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		C658E3A52412FCE100F5BA99 /* TripDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailViewController.swift; sourceTree = "<group>"; };
+		C6CB0FCB25CF4B60009A19AA /* geoJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geoJSON.swift; sourceTree = "<group>"; };
 		DD5483CB9A8AAD5624C720E5 /* Pods-Paddle Pal Pro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paddle Pal Pro.release.xcconfig"; path = "Target Support Files/Pods-Paddle Pal Pro/Pods-Paddle Pal Pro.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,6 +194,7 @@
 			children = (
 				C658E3A124105F3C00F5BA99 /* User.swift */,
 				C658E39F24105EDA00F5BA99 /* Trip.swift */,
+				C6CB0FCB25CF4B60009A19AA /* geoJSON.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -282,7 +285,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Warren Zimmerman";
 				TargetAttributes = {
 					C658E35924101BB600F5BA99 = {
@@ -405,6 +408,7 @@
 				C658E35E24101BB600F5BA99 /* AppDelegate.swift in Sources */,
 				C658E36024101BB600F5BA99 /* SceneDelegate.swift in Sources */,
 				C658E3A224105F3C00F5BA99 /* User.swift in Sources */,
+				C6CB0FCC25CF4B60009A19AA /* geoJSON.swift in Sources */,
 				C658E39C241043C200F5BA99 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +490,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -546,6 +551,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

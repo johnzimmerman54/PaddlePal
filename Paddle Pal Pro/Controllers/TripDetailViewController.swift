@@ -54,7 +54,10 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
     var currentPoint: CLLocationCoordinate2D?
     var endPoint: CLLocationCoordinate2D?
     var tripCoords = [CLLocationCoordinate2D]()
+    
+    //MARK: - Stopwatch
     var startButton: UIButton!
+    var saveButton: UIButton!
     var stopWatch: UITextField!
     var timer = Timer()
     var (hours, minutes, seconds, fractions) = (0, 0, 0, 0)
@@ -64,7 +67,9 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
     var hoursString: String?
     var totalTime = "00:00:00.00"
     
-    // may not need
+    
+    // sample trip
+    //
     var tripRoute: Route?
     var directionsRoute: Route?
     let disneyLandCoordinate = CLLocationCoordinate2D(latitude: 33.8121, longitude: -117.9190)
@@ -72,6 +77,9 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
     let testCoord1 = CLLocationCoordinate2D(latitude: 45.472633, longitude: -122.669394)
     let testCoord2 = CLLocationCoordinate2D(latitude: 45.472226, longitude: -122.664364)
     let testCoord3 = CLLocationCoordinate2D(latitude: 45.477586, longitude: -122.663132)
+    //
+    //
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,11 +103,11 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
         setupStartButton()
         setupStopWatch()
     }
- 
+    
+    //MARK: - Map Buttons Start / Save
     func setupStartButton() {
         startButton = UIButton(frame: CGRect(x: view.frame.width/2 - 100, y: view.frame.height - 155, width: 200, height: 65))
         startButton.backgroundColor = UIColor(red: 249/255, green: 234/255, blue: 96/255, alpha: 1)
-        startButton.setTitle("Record Trip", for: .normal)
         startButton.setTitleColor(UIColor(red: 22/255, green: 62/255, blue: 66/255, alpha: 1), for: .normal)
         startButton.titleLabel?.font = UIFont(name: "Arial", size: 28)
         startButton.setTitle("Start Trip", for: .normal)
@@ -111,8 +119,23 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
         view.addSubview(startButton)
     }
     
+    func setupSaveButton() {
+        saveButton = UIButton(frame: CGRect(x: view.frame.width/2 - 100, y: view.frame.height - 85, width: 200, height: 65))
+        saveButton.backgroundColor = UIColor(red: 249/255, green: 234/255, blue: 96/255, alpha: 1)
+        saveButton.setTitleColor(UIColor(red: 22/255, green: 62/255, blue: 66/255, alpha: 1), for: .normal)
+        saveButton.titleLabel?.font = UIFont(name: "Arial", size: 28)
+        saveButton.setTitle("Save Trip", for: .normal)
+        saveButton.layer.cornerRadius = 20
+        saveButton.layer.shadowOffset = CGSize(width: 0, height: 10)
+        saveButton.layer.shadowRadius = 20
+        saveButton.layer.shadowOpacity = 0.5
+        saveButton.addTarget(self, action: #selector(startButtonPressed(_:)), for: .touchUpInside)
+        view.addSubview(saveButton)
+    }
+    
     func setupStopWatch() {
         stopWatch = UITextField(frame: CGRect(x: 0, y: 90, width: view.frame.width, height: 65))
+        stopWatch.allowsEditingTextAttributes = false
         stopWatch.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3)
         stopWatch.text = String(totalTime)
         stopWatch.font = UIFont(name: "Arial", size: 24)
@@ -121,22 +144,120 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
     }
     
     @objc func startButtonPressed(_ sender: UIButton) {
-        timer.invalidate()
-        //mapView.setUserTrackingMode(.none, animated: true, completionHandler: nil)
         
-        tripActive = true
-        if mapView.userLocation?.location != nil {
-            startPoint = CLLocationCoordinate2D(latitude: mapView.userLocation!.location!.coordinate.latitude, longitude: mapView.userLocation!.location!.coordinate.longitude)
-            // Add user location start point to trip coordinates
-            tripCoords.append(contentsOf: [startPoint!])
-            drawTrip()
+        if tripActive == false {
+            timer.invalidate()
+            //mapView.setUserTrackingMode(.none, animated: true, completionHandler: nil)
+            
+            startButton.setTitle("Pause", for: .normal)
+            tripActive = true
+            if mapView.userLocation?.location != nil {
+                startPoint = CLLocationCoordinate2D(latitude: mapView.userLocation!.location!.coordinate.latitude, longitude: mapView.userLocation!.location!.coordinate.longitude)
+                // Add user location start point to trip coordinates
+                tripCoords.append(contentsOf: [startPoint!])
+                drawTrip()
+            } else {
+                print("User location not available. - startButtonPressed()")
+            }
+            
+            // Start Timer starts Trip Recording
+            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(tictock), userInfo: nil, repeats: true)
+            
         } else {
-            print("User location not available. - startButtonPressed()")
+            tripActive = false
+            startButton.setTitle("Resume", for: .normal)
+            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(tictock), userInfo: nil, repeats: false)
+            
+            setupSaveButton()
         }
         
-        // Start Timer starts Trip Recording
-        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(tictock), userInfo: nil, repeats: true)
+        
     }
+    
+    //MARK: Save Button Pressed
+    @objc func saveButtonPressed(_ sender: UIButton) {
+          //Get Temp Trip
+          timer.invalidate()
+        
+        
+            
+          
+          //Save to User Record
+          // save tripCoords to GeoJSON
+          //saveGeoJSON(tripCoords: tripCoords)
+        
+          //Display Trip
+          // read GeoJSON
+          
+          
+          //Upload Trip
+          
+          
+      }
+
+    
+    //MARK: Save geoJSON
+//    func saveGeoJSON(tripCoords: [CLLocationCoordinate2D]) {
+//        // GeoJSON sample trip collection
+//        let geoJsonCoords = """
+//            {
+//              "type": "FeatureCollection",
+//                {
+//                  "type": "Feature",
+//                  "properties": {
+//                    "NAME": "<tripName>",
+//                    "TYPE": "Route"
+//                  },
+//                  "geometry": {
+//                    "type": "LineString",
+//                    "coordinates": [
+//
+//                    // parse tripCoords
+//                      [
+//                        45.472633,
+//                        -122.669394
+//                      ],
+//                      [
+//                        45.472226,
+//                        -122.664364
+//                      ],
+//                      [
+//                        45.477586,
+//                        -122.663132
+//                      ],
+//                    ]
+//                  },
+//                  "id": "e0369f23e7e33d9f11a695f0bf6a2498"
+//                }
+//            }
+//            """
+//
+//        do {
+//            let geoJsonData = geoJsonCoords.data(using: .utf8)!
+//            let geoJsonModel = try JSONDecoder().decode(FeatureCollection.self, from: geoJsonData)
+//        } catch {
+//            print("Error during encoding geoJSON")
+//        }
+//
+//
+//        // Parse trip coordinates to geojson file and save
+//        let fileName = userTrip!.tripUser + userTrip!.tripName
+//
+//        let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+//
+//        let fileURL = URL(fileURLWithPath: fileName, relativeTo: directoryURL).appendingPathExtension("geojson")
+        
+        
+        //tripCoords.forEach(tripCoords) {
+            
+         //   do {
+         //       try str.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
+         //   } catch {
+                 //failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
+         //   }
+        
+        //}
+    //}
     
     
     // MARK: - Customizing calculateRoute() to track all trip coords
@@ -147,8 +268,8 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
         // calculate distance between points
         let distanceInMeters = lastPoint.distance(from: nextPoint)
 
-        // add next trip coordinate if greater than 50 meters from last
-        if distanceInMeters > 10 {
+        // add next trip coordinate if greater than 3 meters from last
+        if distanceInMeters > 3 {
             // set new point
             tripCoords.append(nextCoor)
         } else {
@@ -156,6 +277,8 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
         }
         
     }
+    
+    //MARK: Draw Trip
     
     func drawTrip() {
         guard tripCoords.count > 0 else { return }
@@ -233,10 +356,7 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
         
     }
     
-    func saveTrip(coordinates: [CLLocationCoordinate2D]) {
-        // save GeoJSON file
-                
-    }
+   
     
     // MARK: - stopwatch count and record trip
     @objc func tictock() {
@@ -270,8 +390,6 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
         else {
             timer.invalidate()
             
-            // save GeoJSON file with coordinates
-            saveTrip(coordinates: tripCoords)
         }
     }
     
@@ -323,64 +441,9 @@ class TripDetailViewController: UIViewController, MGLMapViewDelegate {
 //        present(navigationVC, animated: true, completion: nil)
 //    }
     
-     //GeoJson format for each coord
-     //    {
-     //      "type": "Feature",
-     //      "properties": {
-     //        "NAME": "Red",
-     //        "TYPE": "Rail line"
-     //      },
-     //      "geometry": {
-     //        "type": "LineString",
-     //        "coordinates": [
-     //          [
-     //            -77.020294,
-     //            38.979839
-     //          ],
-     //          [
-     //            -77.020057,
-     //            38.979409
-     //          ]
-     //        ]
-     //    }
-     //    }
+
      
-     //Start button - begin recording coords
-     func StartTrip() {
-         //Start timer
-         //var timer = Timer()
-         //var totalTime = 0
-         //var secondsPassed = 0
-         
-         //Set initial coord
-         
-         
-     }
-     
-     
-     // Pause button - pause recording coords and save trip data
-     func PauseTrip() {
-         //Pause timer
-         
-         //Pause recording coords
-         
-         //Save last coord
-         
-         
-     }
-     
-     
-     //Stop button - end recording coords and save trip data
-     func StopTrip() {
-         //Stop timer
-         
-         //Save all coords to local db as trip
-         
-         //Show Trip
-         
-         
-     }
-     
+
      
 
 }
